@@ -1,0 +1,7 @@
+import csvim
+f=open('suwon.csv','r')
+data=csv.reader(f)
+print(data)
+for row in data:
+    print(row)
+f.close()
