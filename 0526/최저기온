@@ -1,0 +1,16 @@
+#최저기온
+import csv
+f=open('suwon.csv','r')
+data=csv.reader(f)
+
+min_temp=100
+min_data=" " 
+header=next(data)
+
+for row in data:
+    print(row)
+    if float(row[-1])<min_temp:
+        min_temp=float(row[-1])
+        min_data=row[0]
+f.close()
+print(min_data, min_temp)
