@@ -1,0 +1,16 @@
+#최고기온
+import csv
+f=open('suwon.csv','r')
+data=csv.reader(f)
+
+max_temp=-90 # 최고기온
+max_data=" " #최고기온의 날짜
+header=next(data)
+
+for row in data:
+    print(row)
+    if float(row[-1])>max_temp:
+        max_temp=float(row[-1])
+        max_data=row[0]
+f.close()
+print(max_data, max_temp)
