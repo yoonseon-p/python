@@ -1,0 +1,40 @@
+# 가장 추운 달
+import csv
+f=open('suwon2021.csv','r')
+data=csv.reader(f)
+
+header = next(data)
+
+sum12=0 # 평균기온 합계저장
+sum1=0
+sum2=0
+
+cnt12=0 # 평균기온 합걔응 저장하는 일 수(날짜 수)
+cnt1=0
+cnt2=0
+
+for row in data:
+    if '2021-01' in row[0]: # 1월 평균 기온의 함계 및 저장일 수
+        sum1+=float(row[2])
+        cnt1+=1;
+    elif '2021-02' in row[0]: # 2월 평균 기온의 함계 및 저장일 수
+        sum2+=float(row[2])
+        cnt2+=1;
+    elif '2021-12' in row[0]: # 12월 평균 기온의 함계 및 저장일 수
+        sum12+=float(row[2])
+        cnt12+=1;
+        
+avg12 = sum12/cnt12 # 평균기온의 1년 평균
+avg1 = sum1/cnt1
+avg2 = sum2/cnt2
+
+if avg12<avg1 and avg12<avg2: # 가장 추운 달 계산
+    print("12월이 가장 추운 달입니다.")
+elif avg1<avg12 and avg1<avg2: 
+    print("1월이 가장 추운 달입니다.")
+else:
+    print("2월이 가장 추운 달입니다.")
+    
+print("!2월의 평균기온은 %.2f입니다."% avg12) # 1,2,12월의 평균기온 출력
+print("!월의 평균기온은 %.2f입니다."% avg1)
+print("2월의 평균기온은 %.2f입니다."% avg2) 
