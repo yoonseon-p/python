@@ -1,0 +1,28 @@
+import csv
+f_s=open('seoul.csv')
+f_d=open('daegu.csv')
+
+data_s=csv.reader(f_s)
+data_d=csv.reader(f_d)
+
+header_s=next(data_s)
+header_d=next(data_d)
+i=0
+j=0
+
+temp_s=[]
+temp_d=[]
+
+for row_s in data_s: #서울의 평균기온을 temp_s리스트에 저장
+    temp_s.append(float(row_s[2]))
+    i+=1
+for row_d in data_d: #대구의 평균기온을 temp_d리스트에 저장
+    temp_d.append(float(row_d[2]))
+    j+=1
+    
+day=0
+for k in range(0,i):
+    if temp_s[k]>temp_d[k]:
+        #print(temp_s[k],temp_d[k]) #서울과 대구 기온 출력
+        day=day+1;
+print("서울이 대구보다 더 더운날은 %d일 입니다."%day)
